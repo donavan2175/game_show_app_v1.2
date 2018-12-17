@@ -6,7 +6,7 @@ const score = document.querySelector('#scoreboard ol');
 const createdLI = document.createElement('li');
 const image = document.createElement('img');
 let letters;
-const show = document.querySelectorAll('.show');
+let show = document.querySelectorAll('.show');
 const title = document.querySelector('#overlay .title');
 const overlay = document.getElementById('overlay');
 
@@ -93,8 +93,7 @@ qwerty.addEventListener('click', (e) => {
     if (e.target.tagName === "BUTTON") {
         e.target.className = "chosen";
         e.target.disabled = true;
-    }    
-        const letterFound = checkLetter(e.target);
+        let letterFound = checkLetter(e.target);
         if (letterFound === null) {
             missed ++;
             score.removeChild(score.firstElementChild);
@@ -104,7 +103,7 @@ qwerty.addEventListener('click', (e) => {
             score.appendChild(createdLI);
         }
         checkWin();
-    
+    }
 });
 
 function checkWin () {
