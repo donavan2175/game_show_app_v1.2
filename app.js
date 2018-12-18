@@ -3,7 +3,7 @@ const phrase = document.getElementById('phrase');
 const start = document.querySelector('.btn__reset');
 let missed = 0;
 const score = document.querySelector('#scoreboard ol');
-const createdLI = document.createElement('li');
+let createdLI = document.createElement('li');
 const image = document.createElement('img');
 let letters;
 let show = document.querySelectorAll('.show');
@@ -68,13 +68,13 @@ function clearPhrase(){
   
   function clearScoreboard(){
     for (let i=0; i<5; i++){
-      scoreboard.removeChild(scoreboard.firstElementChild);
-      let lostHeartLi = document.createElement('li');
-      lostHeartLi.className = "tries";
-      let lostHeartImg = document.createElement('img');
-      lostHeartImg.src = "images/liveHeart.png";
-      lostHeartLi.appendChild(lostHeartImg);
-      scoreboard.appendChild(lostHeartLi);
+      score.removeChild(score.firstElementChild);
+      let createdLI = document.createElement('li')
+      let image = document.createElement('img');
+      image.className = "tries";
+      image.src = "images/liveHeart.png";
+      createdLI.appendChild(image);
+      score.appendChild(createdLI);
     }
   }
   
@@ -113,11 +113,13 @@ function checkWin () {
         start.textContent = "Play Again";
         overlay.style.display = 'flex';
     }
+    let show = document.querySelectorAll('.show');
+    let letters = document.querySelectorAll('.letter');
     if (show.length === letters.length) {
         overlay.className = 'win';
         title.textContent = "you Win";
         start.textContent = "Play Again";
         overlay.style.display = 'flex';
     }
-
+    
 }
