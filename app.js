@@ -4,7 +4,7 @@ const start = document.querySelector('.btn__reset');
 let missed = 0;
 const score = document.querySelector('#scoreboard ol');
 let createdLI = document.createElement('li');
-const image = document.createElement('img');
+let image = document.createElement('img');
 let letters;
 let show = document.querySelectorAll('.show');
 const title = document.querySelector('#overlay .title');
@@ -69,9 +69,9 @@ function clearPhrase(){
   function clearScoreboard(){
     for (let i=0; i<5; i++){
       score.removeChild(score.firstElementChild);
-      let createdLI = document.createElement('li')
+      let createdLI = document.createElement('li');
+      createdLI.className = "tries";
       let image = document.createElement('img');
-      image.className = "tries";
       image.src = "images/liveHeart.png";
       createdLI.appendChild(image);
       score.appendChild(createdLI);
