@@ -9,6 +9,7 @@ let letters;
 let show = document.querySelectorAll('.show');
 const title = document.querySelector('#overlay .title');
 const overlay = document.getElementById('overlay');
+const hearts = document.querySelectorAll('.tries img'); 
 
 start.addEventListener('click', () => {
     overlay.style.display = 'none';
@@ -67,14 +68,9 @@ function clearPhrase(){
   }
   
   function clearScoreboard(){
+    const hearts = document.querySelectorAll('.tries img');
     for (let i=0; i<5; i++){
-      score.removeChild(score.firstElementChild);
-      let createdLI = document.createElement('li');
-      createdLI.className = "tries";
-      let image = document.createElement('img');
-      image.src = "images/liveHeart.png";
-      createdLI.appendChild(image);
-      score.appendChild(createdLI);
+      hearts[i].src = "images/liveHeart.png";
     }
   }
   
@@ -96,11 +92,7 @@ qwerty.addEventListener('click', (e) => {
         let letterFound = checkLetter(e.target);
         if (letterFound === null) {
             missed ++;
-            score.removeChild(score.firstElementChild);
-            createdLI.className = "tries";
-            image.src = 'images/lostHeart.png';
-            createdLI.appendChild(image);
-            score.appendChild(createdLI);
+            hearts[hearts.length - missed].src = 'images/lostHeart.png';
         }
         checkWin();
     }
